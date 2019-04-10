@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +11,8 @@ namespace Server.Engines.Astronomy
 {
     public class ConstellationLedger : Item
     {
+        public override int LabelNumber { get { return 1158520; } } // Constellation Ledger
+
         [Constructable]
         public ConstellationLedger()
             : base(0xFF4)
@@ -89,10 +91,10 @@ namespace Server.Engines.Astronomy
                         Page = Math.Max(0, Page - 1);
                         break;
                     case 3:
-                        Page = Math.Min(Page + 1, Pages - 1);
+                        Page = Math.Min(Page + 1, Math.Max(0, Pages - 1));
                         break;
                     case 4:
-                        Page = Pages - 1;
+                        Page = Math.Max(0, Pages - 1);
                         break;
                 }
 
